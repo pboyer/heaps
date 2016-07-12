@@ -70,11 +70,12 @@ func (h *binaryHeap) heapify(){
         rightI := right(i)
         smallest := i
 
-        if leftI < len(h.vals) && h.vals[i] > h.vals[leftI] { 
+        // promote the lesser of the two children
+        if leftI < len(h.vals) && h.vals[smallest] > h.vals[leftI] { 
             smallest = leftI
         }
 
-        if rightI < len(h.vals) && h.vals[i] > h.vals[rightI] {
+        if rightI < len(h.vals) && h.vals[smallest] > h.vals[rightI] {
             smallest = rightI
         }
 
@@ -82,6 +83,7 @@ func (h *binaryHeap) heapify(){
             h.vals[smallest], h.vals[i] = h.vals[i], h.vals[smallest]
             i = smallest
         } else {
+            // this subtree satisfies the heap property, done
             return
         }
     }

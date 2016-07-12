@@ -6,7 +6,7 @@ import (
 )
 
 func TestBinary(t *testing.T) {
-    for r := 0; r < 10; r++ {
+    for r := 0; r < 20; r++ {
         c := 1000
         h := makeBinaryHeap()
 
@@ -23,12 +23,15 @@ func TestBinary(t *testing.T) {
             }
 
             if i == 0 {
+                last = v
                 continue
             }
 
             if v < last {
                 t.Fatalf("violation of heap property",)
             }
+
+            last = v
         }
     }
 }
